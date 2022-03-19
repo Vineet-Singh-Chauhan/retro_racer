@@ -88,7 +88,7 @@ function startGame(){
         
     }
     
-    
+    //aVDHVH
 
     moveEnemy(car)
     // console.log(car)
