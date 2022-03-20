@@ -7,6 +7,8 @@ const car=document.querySelector(".car");
 document.addEventListener("keydown",keyDown);
 document.addEventListener("keyup",keyUp);
 start.addEventListener("click",startGame);
+const gameAudio = new Audio('../assets/audio/gameaudio.wav');
+
 let gameSpeed=5;
 let score=0;
 let gametoggler=true;
@@ -72,6 +74,9 @@ function moveLines(){
 function startGame(){
     gametoggler=true;
     score=0;
+    gameAudio.loop=true;
+    gameAudio.play();
+console.log(gameAudio)    
     screen.classList.add("hide");
     screen.classList.remove("flex");
     scoreCard.classList.add("flex");
@@ -109,6 +114,10 @@ function startGame(){
 }
 function endGame(){
     gametoggler=false;
+    gameAudio.pause();
+const collideAudio = new Audio('../assets/audio/collideaudio.mp3');
+    collideAudio.play();
+
     screen.innerHTML=`<h1>Game Over</h1>
     <h3>Your Final Score is:${score}</h3><h2>
     Click Here To Restart The Game</h2>`;
