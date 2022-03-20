@@ -7,7 +7,7 @@ const car=document.querySelector(".car");
 document.addEventListener("keydown",keyDown);
 document.addEventListener("keyup",keyUp);
 start.addEventListener("click",startGame);
-const gameAudio = new Audio('../assets/audio/gameaudio.wav');
+const gameAudio = new Audio('assets/audio/gameaudio.wav');
 
 let gameSpeed=5;
 let score=0;
@@ -115,7 +115,7 @@ console.log(gameAudio)
 function endGame(){
     gametoggler=false;
     gameAudio.pause();
-const collideAudio = new Audio('../assets/audio/collideaudio.mp3');
+const collideAudio = new Audio('assets/audio/collideaudio.mp3');
     collideAudio.play();
 //-------collision music-----------------//
     screen.innerHTML=`<h1>Game Over</h1>
