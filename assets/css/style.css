@@ -120,22 +120,3 @@ body{
     
     
 }
-@media(max-width:900px){
-    .screen{
-        width:500px;
-    }
-}
-@media(max-width:600px){
-    .screen{
-        width:500px;
-    }
-
-}
-@media(max-width:500px){
-    .screen{
-        width:200px;
-    }
-    .road{
-        width:200px
-    }
-}
