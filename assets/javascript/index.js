@@ -117,7 +117,7 @@ function endGame(){
     gameAudio.pause();
 const collideAudio = new Audio('../assets/audio/collideaudio.mp3');
     collideAudio.play();
-
+//-------collision music-----------------//
     screen.innerHTML=`<h1>Game Over</h1>
     <h3>Your Final Score is:${score}</h3><h2>
     Click Here To Restart The Game</h2>`;
