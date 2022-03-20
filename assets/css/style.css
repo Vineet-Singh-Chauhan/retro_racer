@@ -120,3 +120,17 @@ body{
     
     
 }
+@media(max-width:500px){
+    .road{
+        width:200px;
+        left:calc(50vw - 100px);
+
+
+    }
+    .screen{
+        width:160px
+    }
+    .scoreCard{
+        width: 170px;
+    }
+}

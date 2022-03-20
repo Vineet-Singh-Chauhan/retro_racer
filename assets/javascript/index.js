@@ -8,6 +8,7 @@ document.addEventListener("keydown",keyDown);
 document.addEventListener("keyup",keyUp);
 start.addEventListener("click",startGame);
 const gameAudio = new Audio('assets/audio/gameaudio.wav');
+roadWidth=parseFloat(getComputedStyle(road).getPropertyValue('width'));
 
 let gameSpeed=5;
 let score=0;
@@ -94,7 +95,7 @@ console.log(gameAudio)
         enemyCar.y=(-a*100);
         enemyCar.style.top=enemyCar.y+"px";
         enemyCar.style.backgroundColor=randomColor();
-        enemyCar.style.left=Math.floor(Math.random()*400)+"px";
+        enemyCar.style.left=Math.floor(Math.random()*(roadWidth-50))+"px";
         road.appendChild(enemyCar);
         
     }
@@ -161,7 +162,7 @@ function moveEnemy(){
         
         if(e.y>parseInt(window.innerHeight)){
             e.y= -(00);
-    e.style.left=Math.floor(Math.random()*400)+"px";
+    e.style.left=Math.floor(Math.random()*(roadWidth-50))+"px";
     
 
         }
@@ -191,7 +192,6 @@ const road = document.querySelector(".road");
    
     //------road boundaries------//
     roadLeft=road.offsetLeft;
-    roadWidth=parseFloat(getComputedStyle(road).getPropertyValue('width'));
     roadRight=roadLeft + roadWidth ;
     roadTop=parseFloat(getComputedStyle(road).getPropertyValue('top'));
     roadHeight=parseFloat(getComputedStyle(road).getPropertyValue('height'));
