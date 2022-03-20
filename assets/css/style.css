@@ -3,6 +3,8 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 3px;
 }
 body{
     display:flex;
@@ -31,6 +33,7 @@ body{
     justify-content: center;
     color:white;
     box-shadow:5px 5px black;
+    z-index: 12;
     /* margin:auto; */
 }
 .road{
@@ -67,13 +70,18 @@ body{
     
 }
 .car,.enemyCar{
-    height:55px;
+    height:65px;
     width:40px;
-    background:red;
+    border-radius: 7px;
+    background: url(../images/qw.png),red;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     position:absolute;
     bottom:50px;
     left:calc(50% - 20px);
     z-index: 10;
+    /* background-image: url(../images/qw.png); */
+
 }
 
 .screen{
@@ -86,9 +94,20 @@ body{
     align-items: center;
     justify-content: center;
     background: rgb(255, 111, 44);
-    z-index:10;
+    z-index:12;
     border:none;
     box-shadow:5px 5px black;
+}
+.screen h2{
+    text-transform: uppercase;
+
+}
+.screen:hover{
+    cursor: default;
+}
+.screen h2:hover{
+    /* cursor: url("../images/cursor.png"),default; */
+    cursor: pointer;
 }
 
 /*-----------------utilities-------------------------*/
@@ -97,4 +116,7 @@ body{
 }
 .flex{
     display:flex;
+    flex-direction: column;
+    
+    
 }

@@ -2,13 +2,14 @@ const screen = document.querySelector(".screen");
 const carGame = document.querySelector(".carGame");
 const road = document.querySelector(".road");
 const scoreCard = document.querySelector(".scoreCard");
-const start=document.querySelector(".start h2");
+let start=document.querySelector(".screen h2");
 const car=document.querySelector(".car");
 document.addEventListener("keydown",keyDown);
 document.addEventListener("keyup",keyUp);
 start.addEventListener("click",startGame);
 let gameSpeed=5;
-
+let score=0;
+let gametoggler=true;
 
 
 //-------------------------controls--------------------//
@@ -50,6 +51,7 @@ for(a=0;a<5;a++){
 
 
 function moveLines(){
+    if(gametoggler){
     // let gameSpeed=5;
     // console.log(window.innerHeight)
     document.querySelectorAll(".lines").forEach(function(e){
@@ -64,13 +66,16 @@ function moveLines(){
 
     })
     window.requestAnimationFrame(moveLines);
-    
+}
 }
 
 function startGame(){
-    
+    gametoggler=true;
+    score=0;
     screen.classList.add("hide");
     screen.classList.remove("flex");
+    scoreCard.classList.add("flex");
+    scoreCard.classList.remove("hide");
     // console.log(screen.classList);
     lines();
     let car=document.createElement("div");
@@ -81,42 +86,72 @@ function startGame(){
 
         let enemyCar=document.createElement("div");
         enemyCar.setAttribute("class","enemyCar");
-        enemyCar.y=(a*100);
+        enemyCar.y=(-a*100);
         enemyCar.style.top=enemyCar.y+"px";
+        enemyCar.style.backgroundColor=randomColor();
         enemyCar.style.left=Math.floor(Math.random()*400)+"px";
         road.appendChild(enemyCar);
         
     }
     
-    //aVDHVH
+    //Random-color
+    function randomColor(){
+        function c(){
+            let hex= Math.floor(Math.random()*256).toString(16);
+            return ("0"+String(hex)).substr(-2);
+        }
+        return "#"+c()+c()+c();
+    }
 
     moveEnemy(car)
     // console.log(car)
 
 }
+function endGame(){
+    gametoggler=false;
+    screen.innerHTML=`<h1>Game Over</h1>
+    <h3>Your Final Score is:${score}</h3><h2>
+    Click Here To Restart The Game</h2>`;
+    screen.classList.add("flex");
+    screen.classList.remove("hide");
+   road.innerHTML="";
+   let start=document.querySelector(".screen h2");
+start.addEventListener("click",startGame);
+scoreCard.classList.add("hide");
+scoreCard.classList.remove("flex");
+
+
+
+}
 function isCollide(car , b){
     // console.log(car)
+    aRect = document.querySelector(".car").getBoundingClientRect();
     bRect = b.getBoundingClientRect();
-    aRect = car.getBoundingClientRect();
     // console.log(aRect)
     // eRect= e.getBoundingClientRect();
     return !((aRect.bottom<bRect.top)||(aRect.top>bRect.bottom)||(aRect.right<bRect.left)||(aRect.left>bRect.right));
 }
-function moveEnemy(car){
+function moveEnemy(){
 
-
+    if(gametoggler){
     // let gameSpeed=5;
     // console.log(window.innerHeight)
     let enemy=document.querySelectorAll(".enemyCar");
     // console.log(enemy)
+
     enemy.forEach(function(e){
-        
+        // const car=document.querySelector(".car")
+
         if(isCollide(car,e)){
-            console.log("hello");
+            // console.log("hello");
+            // gametoggler=false;
+            // console.log(gametoggler);
+            endGame();
+        
         }
         
         if(e.y>parseInt(window.innerHeight)){
-            e.y= -(0);
+            e.y= -(00);
     e.style.left=Math.floor(Math.random()*400)+"px";
     
 
@@ -128,8 +163,15 @@ function moveEnemy(car){
     // window.requestAnimationFrame(moveLines);
     
     })
+    // window.requestAnimationFrame(moveEnemy(car));
+
+    //---------------------score------------------------------//
+    // console.log(score++);
+    score++;
+    scoreCard.innerHTML=`<h2>Score : ${score}</h2>`;
     window.requestAnimationFrame(moveEnemy);
-    
+
+}
 }
 
 //-----------------game play---------------------//
@@ -187,6 +229,3 @@ const road = document.querySelector(".road");
 
     
 }
-
-
-
